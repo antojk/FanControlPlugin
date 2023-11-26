@@ -11,7 +11,7 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0"/>
-        <PackageReference Include="Moq" Version="4.20.69" />
+        <PackageReference Include="Moq" Version="4.20.69"/>
         <PackageReference Include="NUnit" Version="3.13.3"/>
         <PackageReference Include="NUnit3TestAdapter" Version="4.2.1"/>
         <PackageReference Include="NUnit.Analyzers" Version="3.6.1"/>
@@ -19,13 +19,21 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\FanControl.Liquidctl\FanControl.Liquidctl.csproj" />
+        <ProjectReference Include="..\..\FanControl.Liquidctl\FanControl.Liquidctl.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Reference Include="FanControl.Plugins">
-        <HintPath>J:\Fan Control\FanControl.Plugins.dll</HintPath>
-      </Reference>
+        <Reference Include="FanControl.Plugins">
+            <HintPath>J:\Fan Control\FanControl.Plugins.dll</HintPath>
+        </Reference>
     </ItemGroup>
+
+    
+    <Target Name="CopyTestJson" AfterTargets="Build">
+        <ItemGroup>
+            <Content  Include="tests_*.json"/> 
+        </ItemGroup>
+        <Copy SourceFiles="@(Content)" DestinationFolder="$(OutputPath)"/>
+    </Target>
 
 </Project>
