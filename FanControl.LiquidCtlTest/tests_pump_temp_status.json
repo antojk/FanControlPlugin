@@ -1,57 +1,27 @@
 ﻿{
   "bus": "hid",
-  "address": "\\\\?\\HID#VID_1E71&PID_2019#8&1364b162&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
-  "description": "NZXT RGB & Fan Controller (3+6 channels)",
+  "address": "\\\\?\\HID#VID_3902&PID_2010#8&45364b162&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+  "description": "NZXT Kraken Pump",
   "status": [
     {
-      "key": "Fan 1 control mode",
+      "key": "Pump control mode",
       "value": "PWM",
       "unit": ""
     },
     {
-      "key": "Fan 1 duty",
+      "key": "Pump duty",
       "value": 25,
       "unit": "%"
     },
     {
-      "key": "Fan 1 speed",
+      "key": "Pump speed",
       "value": 609,
       "unit": "rpm"
     },
     {
-      "key": "Fan 2 control mode",
-      "value": "PWM",
-      "unit": ""
-    },
-    {
-      "key": "Fan 2 duty",
-      "value": 25,
-      "unit": "%"
-    },
-    {
-      "key": "Fan 2 speed",
-      "value": 587,
-      "unit": "rpm"
-    },
-    {
-      "key": "Fan 3 control mode",
-      "value": "PWM",
-      "unit": ""
-    },
-    {
-      "key": "Fan 3 duty",
-      "value": 25,
-      "unit": "%"
-    },
-    {
-      "key": "Fan 3 speed",
-      "value": 746,
-      "unit": "rpm"
-    },
-    {
-      "key": "Noise level",
-      "value": 0,
-      "unit": "dB"
+      "key": "Liquid temperature",
+      "value": 29.4,
+      "unit": "c"
     }
   ]
 }
