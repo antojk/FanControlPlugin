@@ -12,8 +12,8 @@ public class LiquidctlDeviceTests
             .Callback((string msg) => Console.WriteLine($"{msg}"))
             .Verifiable();
         var statusJson =
-            JsonConvert.DeserializeObject<LiquidctlStatusJSON>(File.ReadAllText("tests_fan_status.json"));
-        var device = new LiquidctlDevice(statusJson, pluginLogger.Object);
+            JsonConvert.DeserializeObject<LiquidCtlStatusJson>(File.ReadAllText("tests_fan_status.json"));
+        var device = new LiquidCtlDevice(statusJson, pluginLogger.Object);
         Assert.Multiple(() =>
         {
             Assert.That(device is not null);
@@ -36,8 +36,8 @@ public class LiquidctlDeviceTests
             .Callback((string msg) => Console.WriteLine($"{msg}"))
             .Verifiable();
         var statusJson =
-            JsonConvert.DeserializeObject<LiquidctlStatusJSON>(File.ReadAllText("tests_pump_temp_status.json"));
-        var device = new LiquidctlDevice(statusJson, pluginLogger.Object);
+            JsonConvert.DeserializeObject<LiquidCtlStatusJson>(File.ReadAllText("tests_pump_temp_status.json"));
+        var device = new LiquidCtlDevice(statusJson, pluginLogger.Object);
         Assert.Multiple(() =>
         {
             Assert.That(device is not null);
