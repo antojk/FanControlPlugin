@@ -1,0 +1,27 @@
+﻿{
+  "bus": "hid",
+  "address": "\\\\?\\HID#VID_3902&PID_2010#8&45364b162&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+  "description": "NZXT Kraken Pump",
+  "status": [
+    {
+      "key": "Pump control mode",
+      "value": "PWM",
+      "unit": ""
+    },
+    {
+      "key": "Pump duty",
+      "value": 25,
+      "unit": "%"
+    },
+    {
+      "key": "Pump speed",
+      "value": 609,
+      "unit": "rpm"
+    },
+    {
+      "key": "Liquid temperature",
+      "value": 29.4,
+      "unit": "c"
+    }
+  ]
+}
