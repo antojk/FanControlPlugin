@@ -237,7 +237,7 @@ public class FanControlPluginTests
         Assert.Multiple(() =>
         {
             Assert.That(pluginControlSensors.First().Value, Is.EqualTo(100));
-            Assert.That(pluginSensors.First().Value, Is.GreaterThanOrEqualTo(2000)); //The rated max speed of the fans are around 2000
+            Assert.That(pluginSensors.First().Value, Is.GreaterThanOrEqualTo(1900)); //The rated max speed of the fans are around 2000 so achieving top speed on case mounted fan will be less
         });
         ((IPluginControlSensor)pluginControlSensors.First()).Set(25); //Setting back to default
     }
