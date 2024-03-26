@@ -184,20 +184,19 @@ public class FanControlPluginTests
         plugin.Load(mockSensorContainer.Object);
         mockSensorContainer.Verify(x => x.FanSensors, Times.Once);
         mockSensorContainer.Verify(x => x.ControlSensors, Times.Once);
-
-        // Update the sensor statuses
-        plugin.Update();
-
+       
         Assert.Multiple(() =>
         {
             Assert.That(pluginSensors.First() is not null);
             Assert.That(pluginControlSensors.First() is not null);
             pluginSensors.ToList().ForEach((IPluginSensor sensor) =>
             {
+                sensor.Update();
                 Assert.That(sensor.Value, Is.GreaterThan(500)); // 500 is the bottom speed of the fans in question
             });
             pluginControlSensors.ToList().ForEach((IPluginControlSensor ctrlSensor) =>
             {
+                ctrlSensor.Update();
                 Assert.That(ctrlSensor.Value, Is.EqualTo(25)); // 25% is the default duty cycle of the NZXT controller
             });
 
@@ -233,12 +232,15 @@ public class FanControlPluginTests
         Assert.That(pluginControlSensors.First(), Is.InstanceOf(typeof(IPluginControlSensor)));
         pluginControlSensors.First().Set(100);
         await Task.Delay(2000);
-        plugin.Update();
+        pluginSensors.First().Update();
         Assert.Multiple(() =>
         {
             Assert.That(pluginControlSensors.First().Value, Is.EqualTo(100));
             Assert.That(pluginSensors.First().Value, Is.GreaterThanOrEqualTo(1900)); //The rated max speed of the fans are around 2000 so achieving top speed on case mounted fan will be less
         });
-        pluginControlSensors.First().Set(25); //Setting back to default
+        pluginControlSensors.First().Reset(); //Setting back to default
+        Assert.That(pluginControlSensors.First().Value, Is.EqualTo(50));
     }
+    
+    
 }
