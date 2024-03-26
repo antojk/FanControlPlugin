@@ -231,14 +231,14 @@ public class FanControlPluginTests
         mockSensorContainer.Verify(x => x.ControlSensors, Times.Once);
 
         Assert.That(pluginControlSensors.First(), Is.InstanceOf(typeof(IPluginControlSensor)));
-        ((IPluginControlSensor)pluginControlSensors.First()).Set(100);
-        await Task.Delay(1000);
+        pluginControlSensors.First().Set(100);
+        await Task.Delay(2000);
         plugin.Update();
         Assert.Multiple(() =>
         {
             Assert.That(pluginControlSensors.First().Value, Is.EqualTo(100));
             Assert.That(pluginSensors.First().Value, Is.GreaterThanOrEqualTo(1900)); //The rated max speed of the fans are around 2000 so achieving top speed on case mounted fan will be less
         });
-        ((IPluginControlSensor)pluginControlSensors.First()).Set(25); //Setting back to default
+        pluginControlSensors.First().Set(25); //Setting back to default
     }
 }
